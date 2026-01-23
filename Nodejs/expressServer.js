@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import http from "http";
 import express from "express";
 
@@ -26,3 +27,30 @@ app.use("/categories", categoryRoutes);
 server.listen(8000, () => {
   console.log("server is up & running at http://localhost:8000");
 });
+=======
+import http from "http";
+import express from "express";
+
+const app = express();
+const port = 8080;
+
+app.get("/", (req, res) => {
+  res.send("GET request to the homepage");
+});
+
+app.post("/", (req, res) => {
+  res.send("POST request to the homepage");
+});
+
+app.get("/about", (req, res) => {
+  res.send("About Page");
+});
+
+app.all("/", (req, res) => {
+  res.status(404).send("404-Page not found");
+});
+
+app.listen(port, () => {
+  console.log("Example app listening at http://localhost:${port}");
+});
+>>>>>>> a3d051c319bbd75979d67048a6ff03bc2622d32c
