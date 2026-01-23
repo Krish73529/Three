@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 import http from "http";
 import express from "express";
+import mongoose from "mongoose";
 
 //!importing routes
 import userRoutes from "./routes/user.routes.js";
@@ -12,6 +12,25 @@ const app = express();
 //server
 
 const server = http.createServer(app);
+
+//!connect mongodb database
+
+mongoose
+  .connect("mongodb://localhost:27017", {
+    autoCreate: true,
+    dbName: "3_pm_test",
+  })
+  .then(() => {
+    console.log("Database connected");
+  })
+  .catch((error) => {
+    console.log("---Database Connectio Error-----");
+    console.log(error);
+  });
+
+//! parse req json body data
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json({
@@ -27,30 +46,3 @@ app.use("/categories", categoryRoutes);
 server.listen(8000, () => {
   console.log("server is up & running at http://localhost:8000");
 });
-=======
-import http from "http";
-import express from "express";
-
-const app = express();
-const port = 8080;
-
-app.get("/", (req, res) => {
-  res.send("GET request to the homepage");
-});
-
-app.post("/", (req, res) => {
-  res.send("POST request to the homepage");
-});
-
-app.get("/about", (req, res) => {
-  res.send("About Page");
-});
-
-app.all("/", (req, res) => {
-  res.status(404).send("404-Page not found");
-});
-
-app.listen(port, () => {
-  console.log("Example app listening at http://localhost:${port}");
-});
->>>>>>> a3d051c319bbd75979d67048a6ff03bc2622d32c
