@@ -1,7 +1,7 @@
 import React from "react";
-function Hero() {
+function Home() {
   return (
-    <section className="hero">
+    <section className="section">
       <h1>Hello, I'm Krishna</h1>
       <p>MERN Stack Developer</p>
       <button>View My Work</button>
@@ -9,4 +9,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default Home;
